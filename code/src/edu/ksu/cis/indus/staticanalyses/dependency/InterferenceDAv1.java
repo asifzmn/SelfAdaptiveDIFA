@@ -243,10 +243,10 @@ public class InterferenceDAv1
 
 	}
 	
-	protected void finalize(){ 
-		System.out.println("in Finalizing");  //
-		System.out.println("SynchronizationDA: "+toString());
-	}
+//	protected void finalize(){
+//		System.out.println("in Finalizing");  //
+//		System.out.println("SynchronizationDA: "+toString());
+//	}
 	/**
 	 * @see edu.ksu.cis.indus.staticanalyses.dependency.AbstractDependencyAnalysis#analyze()
 	 */

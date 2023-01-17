@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="tool">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/tool/trove-2.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/commons-io-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/xmlenc-0.52.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/FLOWDIST.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/commons-pool-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/commons-lang-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/DUA1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/soot-trunk.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/jibx-run-1.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tool/commons-cli-1.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

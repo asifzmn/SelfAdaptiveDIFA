@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/data/ADEN/ADEN.iml" filepath="$PROJECT_DIR$/data/ADEN/ADEN.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhosphorTest/MultiChatTest/MultiChatTest.iml" filepath="$PROJECT_DIR$/PhosphorTest/MultiChatTest/MultiChatTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JOANATest/MultiChatTest/MultiChatTest1.iml" filepath="$PROJECT_DIR$/JOANATest/MultiChatTest/MultiChatTest1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data/Netty/Netty.iml" filepath="$PROJECT_DIR$/data/Netty/Netty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhosphorTest/NettyTest/NettyTest.iml" filepath="$PROJECT_DIR$/PhosphorTest/NettyTest/NettyTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhosphorTest/NioEchoTest/NioEchoTest.iml" filepath="$PROJECT_DIR$/PhosphorTest/NioEchoTest/NioEchoTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JOANATest/NioEchoTest/NioEchoTest1.iml" filepath="$PROJECT_DIR$/JOANATest/NioEchoTest/NioEchoTest1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JOANATest/OpenChordTest/OpenChordTest.iml" filepath="$PROJECT_DIR$/JOANATest/OpenChordTest/OpenChordTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhosphorTest/OpenChordTest/OpenChordTest1.iml" filepath="$PROJECT_DIR$/PhosphorTest/OpenChordTest/OpenChordTest1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SelfAdaptiveDIFA.iml" filepath="$PROJECT_DIR$/.idea/SelfAdaptiveDIFA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data/Thrift/Thrift.iml" filepath="$PROJECT_DIR$/data/Thrift/Thrift.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JOANATest/ThriftTest/ThriftTest.iml" filepath="$PROJECT_DIR$/JOANATest/ThriftTest/ThriftTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhosphorTest/ThriftTest/ThriftTest1.iml" filepath="$PROJECT_DIR$/PhosphorTest/ThriftTest/ThriftTest1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhosphorTest/VoldemortTest/VoldemortTest.iml" filepath="$PROJECT_DIR$/PhosphorTest/VoldemortTest/VoldemortTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JOANATest/VoldemortTest/VoldemortTest1.iml" filepath="$PROJECT_DIR$/JOANATest/VoldemortTest/VoldemortTest1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhosphorTest/ZookeeperTest/ZookeeperTest.iml" filepath="$PROJECT_DIR$/PhosphorTest/ZookeeperTest/ZookeeperTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code/code.iml" filepath="$PROJECT_DIR$/code/code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data/xSocket/xSocket.iml" filepath="$PROJECT_DIR$/data/xSocket/xSocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhosphorTest/xSocketTest/xSocketTest.iml" filepath="$PROJECT_DIR$/PhosphorTest/xSocketTest/xSocketTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JOANATest/xSocketTest/xSocketTest1.iml" filepath="$PROJECT_DIR$/JOANATest/xSocketTest/xSocketTest1.iml" />
+    </modules>
+  </component>
+</project>

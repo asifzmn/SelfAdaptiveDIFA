@@ -1,0 +1,1 @@
+rm allResult.txt -f

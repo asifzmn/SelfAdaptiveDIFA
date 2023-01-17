@@ -1,0 +1,10 @@
+Socket:
+	java.net.Socket: java.io.InputStream getInputStream()
+	java.net.Socket: java.io.OutputStream getOutputStream()
+Object:
+	java.io.ObjectInputStream: java.lang.Object readObject()
+	java.io.ObjectOutputStream: void writeObject(java.lang.Object)
+NIO:	
+	java.nio.channels.SocketChannel: read
+	java.nio.channels.SocketChannel: write
+	

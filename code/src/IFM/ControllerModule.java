@@ -5,6 +5,9 @@ import QL.Qlearner;
 import java.util.ArrayList;
 
 public class ControllerModule {
+    public static int n_static_config = 5;
+    public static int n_dynamic_config = 5;
+    public static int n_total_config = n_static_config+n_dynamic_config;
     public static void main(String []args) {
         //updateConfigurationFromTimesFile("C:/temp/dynamicConfiguration.txt", "C:/temp/dynamicTimes.txt", (long)100, 4);
 //		String ss1=getNextConfigurations("011001");
@@ -13,7 +16,7 @@ public class ControllerModule {
         learner.gamma=0.9;
         learner.alpha=0.9;
         learner.epsilon=0.2;
-//        setNextConfigurationInFile(learner, "C:/tp/maze3.txt", "C:/tp/Configuration70989hcaidl5802.txt");
+        setNextConfigurationInFile(learner, "maze.txt", "configuration.txt");
 
     }
     public static int getMinPosDiffArrayIndex(ArrayList<Long> oldA, Long expected) {
@@ -155,8 +158,8 @@ public class ControllerModule {
         //int oldI=Integer.parseInt(staticConfigurations, 2);
         if (configurations.length()<6)
             return configurations;
-        String staticConfigurations=configurations.substring(0, 2);
-        String dynamicConfigurations=configurations.substring(2, 6);
+        String staticConfigurations=configurations.substring(0, n_static_config);
+        String dynamicConfigurations=configurations.substring(n_static_config, n_total_config);
         int oldStateY=Integer.parseInt(dynamicConfigurations, 2);
         int oldStateX=Integer.parseInt(staticConfigurations, 2);
         //System.out.println("oldStateY="+oldStateY+" oldStateX="+oldStateX);

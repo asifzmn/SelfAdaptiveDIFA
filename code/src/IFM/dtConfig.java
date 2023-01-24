@@ -134,13 +134,13 @@ public class dtConfig {
 			     }   
 			     System.out.println(" source1="+source1+" source2="+source2+" source3="+source3+" source4="+source4);
 			     if (source1.length()>1)
-			    	 totalSources.putAll(dtUtil.transferfunctionList(dataPath+"/"+source1+".list", ""));
+			    	 totalSources.putAll(disttaint.dtUtil.transferfunctionList(dataPath+"/"+source1+".list", ""));
 			     if (source2.length()>1)
-			    	 totalSources.putAll(dtUtil.transferfunctionList(dataPath+"/"+source2+".list", ""));   
+			    	 totalSources.putAll(disttaint.dtUtil.transferfunctionList(dataPath+"/"+source2+".list", ""));
 			     if (source3.length()>1)
-			    	 totalSources.putAll(dtUtil.transferfunctionList(dataPath+"/"+source3+".list", ""));  
+			    	 totalSources.putAll(disttaint.dtUtil.transferfunctionList(dataPath+"/"+source3+".list", ""));
 			     if (source4.length()>1)
-			    	 totalSources.putAll(dtUtil.transferfunctionList(dataPath+"/"+source4+".list", ""));
+			    	 totalSources.putAll(disttaint.dtUtil.transferfunctionList(dataPath+"/"+source4+".list", ""));
 			     return totalSources;
 			    } catch (Exception e) {   
 			     e.printStackTrace();   
@@ -192,13 +192,13 @@ public class dtConfig {
 			     //System.out.println(" sink1="+sink1+" sink2="+sink2+" sink3="+sink3+" sink4="+sink4);
 			     
 			     if (sink1.length()>1)
-			    	 totalSinks.putAll(dtUtil.transferfunctionList(dataPath+"/"+sink1+".list", ""));  
+			    	 totalSinks.putAll(disttaint.dtUtil.transferfunctionList(dataPath+"/"+sink1+".list", ""));
 			     if (sink2.length()>1)
-			    	 totalSinks.putAll(dtUtil.transferfunctionList(dataPath+"/"+sink2+".list", ""));   
+			    	 totalSinks.putAll(disttaint.dtUtil.transferfunctionList(dataPath+"/"+sink2+".list", ""));
 			     if (sink3.length()>1)
-			    	 totalSinks.putAll(dtUtil.transferfunctionList(dataPath+"/"+sink3+".list", ""));  
+			    	 totalSinks.putAll(disttaint.dtUtil.transferfunctionList(dataPath+"/"+sink3+".list", ""));
 			     if (sink4.length()>1)
-			    	 totalSinks.putAll(dtUtil.transferfunctionList(dataPath+"/"+sink4+".list", ""));
+			    	 totalSinks.putAll(disttaint.dtUtil.transferfunctionList(dataPath+"/"+sink4+".list", ""));
 			     return totalSinks;
 			    } catch (Exception e) {   
 			     e.printStackTrace();   
@@ -251,13 +251,13 @@ public class dtConfig {
 			     }   
 			     //System.out.println(" source1="+source1+" source2="+source2+" source3="+source3+" source4="+source4);
 			     if (source1.length()>1)
-			    	 totalSources.addAll(dtUtil.getListSet(dataPath+"/"+source1+".list"));
+			    	 totalSources.addAll(disttaint.dtUtil.getListSet(dataPath+"/"+source1+".list"));
 			     if (source2.length()>1)
-			    	 totalSources.addAll(dtUtil.getListSet(dataPath+"/"+source2+".list"));   
+			    	 totalSources.addAll(disttaint.dtUtil.getListSet(dataPath+"/"+source2+".list"));
 			     if (source3.length()>1)
-			    	 totalSources.addAll(dtUtil.getListSet(dataPath+"/"+source3+".list"));  
+			    	 totalSources.addAll(disttaint.dtUtil.getListSet(dataPath+"/"+source3+".list"));
 			     if (source4.length()>1)
-			    	 totalSources.addAll(dtUtil.getListSet(dataPath+"/"+source4+".list"));
+			    	 totalSources.addAll(disttaint.dtUtil.getListSet(dataPath+"/"+source4+".list"));
 			     return totalSources;
 			    } catch (Exception e) {   
 			     e.printStackTrace();   
@@ -309,11 +309,11 @@ public class dtConfig {
 			     //System.out.println(" sink1="+sink1+" sink2="+sink2+" sink3="+sink3+" sink4="+sink4);
 			     
 			     if (sink1.length()>1)
-			    	 totalSinks.addAll(dtUtil.getListSet(dataPath+"/"+sink1+".list"));  
+			    	 totalSinks.addAll(disttaint.dtUtil.getListSet(dataPath+"/"+sink1+".list"));
 			     if (sink2.length()>1)
-			    	 totalSinks.addAll(dtUtil.getListSet(dataPath+"/"+sink2+".list"));   
+			    	 totalSinks.addAll(disttaint.dtUtil.getListSet(dataPath+"/"+sink2+".list"));
 			     if (sink3.length()>1)
-			    	 totalSinks.addAll(dtUtil.getListSet(dataPath+"/"+sink3+".list"));  
+			    	 totalSinks.addAll(disttaint.dtUtil.getListSet(dataPath+"/"+sink3+".list"));
 			     if (sink4.length()>1)
 			    	 totalSinks.addAll(dtUtil.getListSet(dataPath+"/"+sink4+".list"));
 			     return totalSinks;

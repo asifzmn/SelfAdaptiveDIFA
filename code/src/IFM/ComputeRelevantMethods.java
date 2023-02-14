@@ -55,7 +55,7 @@ public class ComputeRelevantMethods extends EAInst {
     protected static dtOptions opts = new dtOptions();
 
     //	public static ArrayList coveredMethods = new ArrayList();
-//	public static ArrayList branchStmts = new ArrayList();
+    //	public static ArrayList branchStmts = new ArrayList();
     HashSet<String> sourceMethods = new HashSet<String>();
     HashSet<String> sinkMethods = new HashSet<String>();
     Set<SootMethod> myMethods= new HashSet<SootMethod>();
@@ -96,11 +96,18 @@ public class ComputeRelevantMethods extends EAInst {
         if (sourceMethods.size()+sinkMethods.size()<1)
             System.exit(0);
 
+        boolean ICFG = false;
+        if (!ICFG)
+        {
+
+        }
+
         //int ret = createVTGWithIndus();
         Set<SootMethod> reachableMethods = new LinkedHashSet<SootMethod>();
         reachableMethods.addAll(ProgramFlowGraph.inst().getReachableAppMethods());
 
         System.out.println("sourceMethods.size()="+sourceMethods.size()+" sinkMethods.size()="+sinkMethods.size()+" myMethods.size()="+myMethods.size());
+        System.exit(0);
         List<SootMethod> entryMethods = ProgramFlowGraph.inst().getEntryMethods();
         ReachabilityAnalysis.computeReachability(entryMethods);
 

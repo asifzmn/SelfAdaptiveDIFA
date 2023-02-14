@@ -1,8 +1,7 @@
 package IFM;
 import java.util.Arrays;
 
-
-import ODD.ODDQLUtil;
+//import ODD.ODDQLUtil;
 
 public class Variant {
 	//Static parameters Static flow (static dependencies), Flow Sensitivity, Context Sensitivity, Exceptional flow, ICFG
@@ -46,7 +45,7 @@ public class Variant {
 		}
 	}
 
-	public static void loadFromFile(String mazeFile) {
-		MAP=ODDQLUtil.getMAPFromFile(mazeFile, Framework_width, Framework_height);
-	}
+//	public static void loadFromFile(String mazeFile) {
+//		MAP=ODDQLUtil.getMAPFromFile(mazeFile, Framework_width, Framework_height);
+//	}
 }

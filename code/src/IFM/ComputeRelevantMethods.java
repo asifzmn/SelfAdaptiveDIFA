@@ -1,6 +1,6 @@
 package IFM;
 
-import dua.Forensics;
+import  dua.Forensics;
 import fault.StmtMapper;
 import soot.*;
 import soot.util.dot.DotGraph;
@@ -107,7 +107,7 @@ public class ComputeRelevantMethods extends EAInst {
         reachableMethods.addAll(ProgramFlowGraph.inst().getReachableAppMethods());
 
         System.out.println("sourceMethods.size()="+sourceMethods.size()+" sinkMethods.size()="+sinkMethods.size()+" myMethods.size()="+myMethods.size());
-        System.exit(0);
+        //System.exit(0);
         List<SootMethod> entryMethods = ProgramFlowGraph.inst().getEntryMethods();
         ReachabilityAnalysis.computeReachability(entryMethods);
 
@@ -118,8 +118,9 @@ public class ComputeRelevantMethods extends EAInst {
             if (sinkMethods.contains(mSign))
                 siMS.add(sMethod);
         }
+        System.out.println("sourceMethods.size()="+sourceMethods.size()+" sinkMethods.size()="+sinkMethods.size()+" myMethods.size()="+myMethods.size());
         System.out.println("reachableMethods.size()="+reachableMethods.size()+" soMS.size()="+soMS.size()+" siMS.size()="+siMS.size());
-        getMethodsFromCFG(reachableMethods);
+        //getMethodsFromCFG(reachableMethods);
         System.out.println("getMethodsFromCFG soMS.size()="+soMS.size()+" siMS.size()="+siMS.size());
         final long afterCFGTime = System.currentTimeMillis();
         System.out.println("Detecting covered methods in ICFG took " + (afterCFGTime - startTime) + " ms");
@@ -127,7 +128,7 @@ public class ComputeRelevantMethods extends EAInst {
 //		while (sizeIncremented)
         {
 //			int methodCount=soMS.size()+siMS.size();
-            SynchronizationInterfereReadyAnalyses(reachableMethods);
+//            SynchronizationInterfereReadyAnalyses(reachableMethods);
 //			System.out.println(" myMethods.size()="+myMethods.size()+" myMethods2.size()="+myMethods2.size());
             System.out.println("SynchronizationInterfereReadyAnalyses soMS.size()="+soMS.size()+" siMS.size()="+siMS.size());
 //			if (methodCount==(soMS.size()+siMS.size()))

@@ -12,6 +12,17 @@ public class Variant {
 
 	public static double invalid = -1;
 
+	public static boolean ICFG;
+
+	public Variant() {
+		ICFG = false;
+	}
+
+	public static boolean isICFG()
+	{
+		return ICFG;
+	}
+
 	public static void main(String[] args) {
 		// Arrays.fill(myarray, 42);
 

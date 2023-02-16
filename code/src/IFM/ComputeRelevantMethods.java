@@ -48,6 +48,7 @@ import edu.ksu.cis.indus.staticanalyses.dependency.SynchronizationDA;
 import edu.ksu.cis.indus.staticanalyses.interfaces.IValueAnalyzer;
 import edu.ksu.cis.indus.staticanalyses.tokens.ITokens;
 import edu.ksu.cis.indus.staticanalyses.dependency.DependencyXMLizerCLI;
+import IFM.Variant.*;
 
 //import org.jibx.runtime.*;
 
@@ -89,18 +90,17 @@ public class ComputeRelevantMethods extends EAInst {
             System.out.println("Running FLOWDIST extension of DUA-Forensics");
         }
 
+        if (Variant.isICFG())
+        {
+            System.exit(0);
+        }
+
         sourceMethods=dtUtil.getListSet(System.getProperty("user.dir") + File.separator + "coveredSourceMethods.txt");
         sinkMethods=dtUtil.getListSet(System.getProperty("user.dir") + File.separator + "coveredSinkMethods.txt");
         //myMethods.addAll(sourceMethods);
         //myMethods.addAll(sinkMethods);
         if (sourceMethods.size()+sinkMethods.size()<1)
             System.exit(0);
-
-        boolean ICFG = false;
-        if (!ICFG)
-        {
-
-        }
 
         //int ret = createVTGWithIndus();
         Set<SootMethod> reachableMethods = new LinkedHashSet<SootMethod>();
@@ -120,7 +120,7 @@ public class ComputeRelevantMethods extends EAInst {
         }
         System.out.println("sourceMethods.size()="+sourceMethods.size()+" sinkMethods.size()="+sinkMethods.size()+" myMethods.size()="+myMethods.size());
         System.out.println("reachableMethods.size()="+reachableMethods.size()+" soMS.size()="+soMS.size()+" siMS.size()="+siMS.size());
-        //getMethodsFromCFG(reachableMethods);
+        getMethodsFromCFG(reachableMethods);
         System.out.println("getMethodsFromCFG soMS.size()="+soMS.size()+" siMS.size()="+siMS.size());
         final long afterCFGTime = System.currentTimeMillis();
         System.out.println("Detecting covered methods in ICFG took " + (afterCFGTime - startTime) + " ms");
@@ -128,7 +128,7 @@ public class ComputeRelevantMethods extends EAInst {
 //		while (sizeIncremented)
         {
 //			int methodCount=soMS.size()+siMS.size();
-//            SynchronizationInterfereReadyAnalyses(reachableMethods);
+            SynchronizationInterfereReadyAnalyses(reachableMethods);
 //			System.out.println(" myMethods.size()="+myMethods.size()+" myMethods2.size()="+myMethods2.size());
             System.out.println("SynchronizationInterfereReadyAnalyses soMS.size()="+soMS.size()+" siMS.size()="+siMS.size());
 //			if (methodCount==(soMS.size()+siMS.size()))
@@ -139,15 +139,36 @@ public class ComputeRelevantMethods extends EAInst {
 
         //System.out.println("myMethods.size()="+myMethods.size());
         System.out.println("Detecting inter-thread methods took " + (System.currentTimeMillis() - afterCFGTime) + " ms");
-        myMethods.addAll(entryMethods);
-        myMethods.addAll(soMS);
-        myMethods.addAll(siMS);
 
         HashSet<String> myMethodStrs = new HashSet<String>();
+
+//        if (ICFG)
+//        {
+//            myMethods.addAll(entryMethods);
+//            myMethods.addAll(soMS);
+//            myMethods.addAll(siMS);
+//
+//            for (SootMethod sMethod : reachableMethods) {
+//                if (myMethods.contains(sMethod))
+//                    myMethodStrs.add(sMethod.getSignature());
+//            }
+//        }
+//
+//        else
+//        {
+//            myMethods.addAll(reachableMethods);
+//            for (SootMethod sMethod : reachableMethods) {
+//                if (myMethods.contains(sMethod))
+//                    myMethodStrs.add(sMethod.getSignature());
+//            }
+//        }
+
+        myMethods.addAll(reachableMethods);
         for (SootMethod sMethod : reachableMethods) {
             if (myMethods.contains(sMethod))
                 myMethodStrs.add(sMethod.getSignature());
         }
+
         System.out.println("myMethods.size()="+myMethods.size()+" myMethodStrs.size()="+myMethodStrs.size());
         dtUtil.writeSet(myMethodStrs, System.getProperty("user.dir") + File.separator + "coveredMethods.txt");
         System.out.println("Generating covered methods took " + (System.currentTimeMillis() - startTime) + " ms");

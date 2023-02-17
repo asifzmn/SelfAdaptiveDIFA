@@ -86,6 +86,7 @@ public class InstrumentMethods extends EAInst {
 		//myMethods= dtUtil.getSet(System.getProperty("user.dir") + File.separator + "coveredMethods.txt");
 		//dtUtil.getArrayListFromTwo(listFile1, listFile2)
 
+		// if ICFG is True only then we instrument the methods reachable from ICFG from
 		if(Variant.isICFG())
 		{
 			myMethods= dtUtil.getSetFromTwo(System.getProperty("user.dir") + File.separator + "coveredMethods.txt", System.getProperty("user.dir") + File.separator + "methodList.out");
@@ -134,6 +135,7 @@ public class InstrumentMethods extends EAInst {
 					continue;
 				}		
 				//System.out.println("sMethod="+sMethod+" sMethod.getName()="+sMethod.getName()+" sMethod.getSignature()="+sMethod.getSignature());
+				// if ICFG is True only then we instrument selected methods
 				if (methodArray!=null && methodArray.size()>1 && Variant.isICFG()){
 					if ( !(methodArray.contains(sMethod) || methodArray.contains(sMethod.getName()) || methodArray.contains(sMethod.getSignature() ))) {
 						continue;
@@ -149,13 +151,17 @@ public class InstrumentMethods extends EAInst {
 				
 				PatchingChain<Unit> pchn = body.getUnits();
 				CFG cfg = ProgramFlowGraph.inst().getCFG(sMethod);
-				
-				if (cfg == null || !cfg.isReachableFromEntry()) {
-					// skip dead CFG (method)
-					if (opts.debugOut()) {
-						System.out.println("\nSkipped method unreachable from entry: " + meId + "!");
+
+				//IF ICFG is True then computation of Reachable From Entry will be considered
+				if (Variant.isICFG()) {
+
+					if (cfg == null || !cfg.isReachableFromEntry()) {
+						// skip dead CFG (method)
+						if (opts.debugOut()) {
+							System.out.println("\nSkipped method unreachable from entry: " + meId + "!");
+						}
+						continue;
 					}
-					continue;
 				}
 				
 				// -- DEBUG
@@ -490,6 +496,7 @@ public class InstrumentMethods extends EAInst {
 					continue;
 				}
 				//System.out.println("sMethod="+sMethod+" sMethod.getName()="+sMethod.getName()+" sMethod.getSignature()="+sMethod.getSignature());
+				// if ICFG is True only then we instrument selected methods
 				if (methodArray!=null && methodArray.size()>1 && Variant.isICFG())
 				{
 					if ( !(methodArray.contains(sMethod) || methodArray.contains(sMethod.getName()) || methodArray.contains(sMethod.getSignature() )))
@@ -506,16 +513,19 @@ public class InstrumentMethods extends EAInst {
 				String meId = sMethod.getSignature();
 				
 				PatchingChain<Unit> pchn = body.getUnits();
+
+				//IF ICFG is True then computation of Reachable From Entry will be considered
 				CFG cfg = ProgramFlowGraph.inst().getCFG(sMethod);
-				
-				if (cfg == null || !cfg.isReachableFromEntry()) {
-					// skip dead CFG (method)
-					if (opts.debugOut()) {
-						System.out.println("\nSkipped method unreachable from entry: " + meId + "!");
+				if (Variant.isICFG()) {
+					if (cfg == null || !cfg.isReachableFromEntry()) {
+						// skip dead CFG (method)
+						if (opts.debugOut()) {
+							System.out.println("\nSkipped method unreachable from entry: " + meId + "!");
+						}
+						continue;
 					}
-					continue;
 				}
-				
+
 				// -- DEBUG
 				if (opts.debugOut()) {
 					System.out.println("\nNow instrumenting method for network interprocess communication Events: " + meId + "...");

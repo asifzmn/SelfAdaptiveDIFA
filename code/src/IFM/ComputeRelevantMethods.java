@@ -90,7 +90,8 @@ public class ComputeRelevantMethods extends EAInst {
             System.out.println("Running FLOWDIST extension of DUA-Forensics");
         }
 
-        if (Variant.isICFG())
+        // If ICFG is False then we do not compute methods covered by ICFG
+        if (!Variant.isICFG())
         {
             System.exit(0);
         }

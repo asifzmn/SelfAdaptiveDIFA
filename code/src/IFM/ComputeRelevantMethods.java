@@ -4,7 +4,7 @@ import  dua.Forensics;
 import fault.StmtMapper;
 import soot.*;
 import soot.util.dot.DotGraph;
-import EAS.*;
+//import EAS.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,7 +33,7 @@ import dua.method.CFGDefUses.Variable;
 import dua.util.Pair;
 import dua.util.Util;
 import soot.jimple.*;
-import EAS.EAInst;
+//import EAS.EAInst;
 import MciaUtil.utils;
 import MciaUtil.VTEdge.VTEType;
 import edu.ksu.cis.indus.staticanalyses.dependency.DependencyXMLizer;
@@ -69,7 +69,8 @@ public class ComputeRelevantMethods extends EAInst {
 
         ComputeRelevantMethods oInst = new ComputeRelevantMethods();
         // examine catch blocks
-        dua.Options.ignoreCatchBlocks = false;
+//        dua.Options.ignoreCatchBlocks = false;
+        dua.Options.ignoreCatchBlocks = Variant.isExceptionalFlow();
 
         Forensics.registerExtension(oInst);
         Forensics.main(args);

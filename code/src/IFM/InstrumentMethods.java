@@ -1,9 +1,9 @@
 package IFM;
 
-import EAS.EAInst;
+//import EAS.EAInst;
 import MciaUtil.utils;
-import disttaint.dtOptions;
-import disttaint.dtUtil;
+//import disttaint.dtOptions;
+//import disttaint.dtUtil;
 import dua.Forensics;
 import dua.global.ProgramFlowGraph;
 import dua.method.CFG;
@@ -19,7 +19,8 @@ import IFM.Variant.*;
 
 public class InstrumentMethods extends EAInst {
 	
-	protected static disttaint.dtOptions opts = new dtOptions();
+	protected static
+	dtOptions opts = new dtOptions();
 	
 	//distEA variables
 	protected SootMethod mReturnFrom;
@@ -38,7 +39,8 @@ public class InstrumentMethods extends EAInst {
 
 		InstrumentMethods dvInst = new InstrumentMethods();
 		// examine catch blocks
-		dua.Options.ignoreCatchBlocks = false;
+//		dua.Options.ignoreCatchBlocks = false;
+		dua.Options.ignoreCatchBlocks = Variant.isExceptionalFlow();
 		Scene.v().addBasicClass("disttaint.OTMonitor");
 //		if (opts.monitor_per_thread()) {
 //			Scene.v().addBasicClass("disttaint.OTMonitor");
@@ -152,17 +154,18 @@ public class InstrumentMethods extends EAInst {
 				PatchingChain<Unit> pchn = body.getUnits();
 				CFG cfg = ProgramFlowGraph.inst().getCFG(sMethod);
 
-				//IF ICFG is True then computation of Reachable From Entry will be considered
-				if (Variant.isICFG()) {
+//				IF ICFG is True then computation of Reachable From Entry will be considered
+//				if (Variant.isICFG()) {
+//				No need because this is a mandatory recahbility computation
 
-					if (cfg == null || !cfg.isReachableFromEntry()) {
+				if (cfg == null || !cfg.isReachableFromEntry()) {
 						// skip dead CFG (method)
 						if (opts.debugOut()) {
 							System.out.println("\nSkipped method unreachable from entry: " + meId + "!");
 						}
 						continue;
 					}
-				}
+//				}
 				
 				// -- DEBUG
 				if (opts.debugOut()) {
@@ -496,7 +499,7 @@ public class InstrumentMethods extends EAInst {
 					continue;
 				}
 				//System.out.println("sMethod="+sMethod+" sMethod.getName()="+sMethod.getName()+" sMethod.getSignature()="+sMethod.getSignature());
-				// if ICFG is True only then we instrument selected methods
+				// if ICFG is True only then we instrument selected/relevant methods
 				if (methodArray!=null && methodArray.size()>1 && Variant.isICFG())
 				{
 					if ( !(methodArray.contains(sMethod) || methodArray.contains(sMethod.getName()) || methodArray.contains(sMethod.getSignature() )))
@@ -514,9 +517,12 @@ public class InstrumentMethods extends EAInst {
 				
 				PatchingChain<Unit> pchn = body.getUnits();
 
-				//IF ICFG is True then computation of Reachable From Entry will be considered
+//				IF ICFG is True then computation of Reachable From Entry will be considered
+//				if (Variant.isICFG())
+//				No need because this is a mandatory recahbility computation
+
 				CFG cfg = ProgramFlowGraph.inst().getCFG(sMethod);
-				if (Variant.isICFG()) {
+				{
 					if (cfg == null || !cfg.isReachableFromEntry()) {
 						// skip dead CFG (method)
 						if (opts.debugOut()) {

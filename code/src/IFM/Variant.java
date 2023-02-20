@@ -13,14 +13,20 @@ public class Variant {
 	public static double invalid = -1;
 
 	public static boolean ICFG;
+	public static boolean exceptionalFlow;
 
 	public Variant() {
 		ICFG = false;
+		exceptionalFlow = false;
 	}
 
 	public static boolean isICFG()
 	{
 		return ICFG;
+	}
+	public static boolean isExceptionalFlow()
+	{
+		return exceptionalFlow;
 	}
 
 	public static void main(String[] args) {

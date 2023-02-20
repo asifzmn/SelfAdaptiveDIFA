@@ -15,7 +15,6 @@ import soot.jimple.*;
 
 import java.io.File;
 import java.util.*;
-import IFM.Variant.*;
 
 public class InstrumentMethods extends EAInst {
 	
@@ -40,7 +39,7 @@ public class InstrumentMethods extends EAInst {
 		InstrumentMethods dvInst = new InstrumentMethods();
 		// examine catch blocks
 //		dua.Options.ignoreCatchBlocks = false;
-		dua.Options.ignoreCatchBlocks = Variant.isExceptionalFlow();
+		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isExceptionalFlow();
 		Scene.v().addBasicClass("disttaint.OTMonitor");
 //		if (opts.monitor_per_thread()) {
 //			Scene.v().addBasicClass("disttaint.OTMonitor");
@@ -89,7 +88,7 @@ public class InstrumentMethods extends EAInst {
 		//dtUtil.getArrayListFromTwo(listFile1, listFile2)
 
 		// if ICFG is True only then we instrument the methods reachable from ICFG from
-		if(Variant.isICFG())
+		if(AnalysisConfiguration.isICFG())
 		{
 			myMethods= dtUtil.getSetFromTwo(System.getProperty("user.dir") + File.separator + "coveredMethods.txt", System.getProperty("user.dir") + File.separator + "methodList.out");
 		}
@@ -138,7 +137,7 @@ public class InstrumentMethods extends EAInst {
 				}		
 				//System.out.println("sMethod="+sMethod+" sMethod.getName()="+sMethod.getName()+" sMethod.getSignature()="+sMethod.getSignature());
 				// if ICFG is True only then we instrument selected methods
-				if (methodArray!=null && methodArray.size()>1 && Variant.isICFG()){
+				if (methodArray!=null && methodArray.size()>1 && AnalysisConfiguration.isICFG()){
 					if ( !(methodArray.contains(sMethod) || methodArray.contains(sMethod.getName()) || methodArray.contains(sMethod.getSignature() ))) {
 						continue;
 					}
@@ -500,7 +499,7 @@ public class InstrumentMethods extends EAInst {
 				}
 				//System.out.println("sMethod="+sMethod+" sMethod.getName()="+sMethod.getName()+" sMethod.getSignature()="+sMethod.getSignature());
 				// if ICFG is True only then we instrument selected/relevant methods
-				if (methodArray!=null && methodArray.size()>1 && Variant.isICFG())
+				if (methodArray!=null && methodArray.size()>1 && AnalysisConfiguration.isICFG())
 				{
 					if ( !(methodArray.contains(sMethod) || methodArray.contains(sMethod.getName()) || methodArray.contains(sMethod.getSignature() )))
 					{

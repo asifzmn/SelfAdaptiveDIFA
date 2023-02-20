@@ -47,7 +47,6 @@
 */
 package IFM;
 
-import IFM.EAOptions;
 import MciaUtil.TryCatchWrapper;
 import MciaUtil.utils;
 import dua.Extension;
@@ -89,7 +88,7 @@ public class EAInst implements Extension {
 		EAInst eaInst = new EAInst();
 		// examine catch blocks
 //		dua.Options.ignoreCatchBlocks = false;
-		dua.Options.ignoreCatchBlocks = Variant.isExceptionalFlow();
+		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isExceptionalFlow();
 
 		Scene.v().addBasicClass("EAS.Monitor");
 		

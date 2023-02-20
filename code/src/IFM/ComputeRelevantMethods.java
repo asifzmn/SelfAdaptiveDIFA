@@ -3,52 +3,23 @@ package IFM;
 import  dua.Forensics;
 import fault.StmtMapper;
 import soot.*;
-import soot.util.dot.DotGraph;
 //import EAS.*;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Set;
 
-import profile.InstrumManager;
 import dua.global.ProgramFlowGraph;
 import dua.global.ReachabilityAnalysis;
-import dua.method.CFG;
-import dua.method.CFGDefUses;
-import dua.method.MethodTag;
-import dua.method.CFG.CFGNode;
-import dua.method.CFGDefUses.Variable;
-import dua.util.Pair;
-import dua.util.Util;
 import soot.jimple.*;
 //import EAS.EAInst;
-import MciaUtil.utils;
-import MciaUtil.VTEdge.VTEType;
-import edu.ksu.cis.indus.staticanalyses.dependency.DependencyXMLizer;
-import edu.ksu.cis.indus.staticanalyses.dependency.IDependencyAnalysis;
-import edu.ksu.cis.indus.staticanalyses.dependency.InterferenceDAv1;
-import edu.ksu.cis.indus.staticanalyses.dependency.InterferenceDAv2;
-import edu.ksu.cis.indus.staticanalyses.dependency.InterferenceDAv3;
-import edu.ksu.cis.indus.staticanalyses.dependency.ReadyDAv1;
-import edu.ksu.cis.indus.staticanalyses.dependency.ReadyDAv2;
-import edu.ksu.cis.indus.staticanalyses.dependency.ReadyDAv3;
-import edu.ksu.cis.indus.staticanalyses.dependency.SynchronizationDA;
-import edu.ksu.cis.indus.staticanalyses.interfaces.IValueAnalyzer;
-import edu.ksu.cis.indus.staticanalyses.tokens.ITokens;
-import edu.ksu.cis.indus.staticanalyses.dependency.DependencyXMLizerCLI;
-import IFM.Variant.*;
+
 
 //import org.jibx.runtime.*;
 
@@ -70,7 +41,7 @@ public class ComputeRelevantMethods extends EAInst {
         ComputeRelevantMethods oInst = new ComputeRelevantMethods();
         // examine catch blocks
 //        dua.Options.ignoreCatchBlocks = false;
-        dua.Options.ignoreCatchBlocks = Variant.isExceptionalFlow();
+        dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isExceptionalFlow();
 
         Forensics.registerExtension(oInst);
         Forensics.main(args);
@@ -92,7 +63,7 @@ public class ComputeRelevantMethods extends EAInst {
         }
 
         // If ICFG is False then we do not compute methods covered by ICFG
-        if (!Variant.isICFG())
+        if (!AnalysisConfiguration.isICFG())
         {
             System.exit(0);
         }

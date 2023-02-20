@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 //import ODD.ODDQLUtil;
 
-public class Variant {
+public class AnalysisConfiguration {
 	//Static parameters Static flow (static dependencies), Flow Sensitivity, Context Sensitivity, Exceptional flow, ICFG
 	//Dynamic parameters Branch coverage, Dynamic points-to sets, Buffer size, Method event, Method-level flow
 	public static final int Framework_width = 64;
@@ -15,7 +15,7 @@ public class Variant {
 	public static boolean ICFG;
 	public static boolean exceptionalFlow;
 
-	public Variant() {
+	public AnalysisConfiguration() {
 		ICFG = false;
 		exceptionalFlow = false;
 	}

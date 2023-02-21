@@ -16,12 +16,14 @@ public class AnalysisConfiguration {
     public static final int Framework_height = 64;
     public static double[][] MAP = new double[Framework_width][Framework_height];
 
-    public static int n_configs = 2;
+    public static int n_configs = 3;
     public static boolean[] staticDynamicSettings = new boolean[n_configs];
 
     public static double invalid = -1;
     public static boolean ICFG;
     public static boolean exceptionalFlow;
+
+    public static boolean methodLevelFlow;
 
     public static String configurations="";
     public static String readLastLine(String fileName) {
@@ -67,16 +69,17 @@ public class AnalysisConfiguration {
 
     }
 
-    public AnalysisConfiguration() {
-        getConfigurations("IFM/configuration_adadifa.txt");
-        ICFG = staticDynamicSettings[0];
-        exceptionalFlow = staticDynamicSettings[1];
-    }
+//    public AnalysisConfiguration() {
+//        getConfigurations("IFM/configuration_adadifa.txt");
+//        ICFG = staticDynamicSettings[0];
+//        exceptionalFlow = staticDynamicSettings[1];
+//    }
 
     static  {
         getConfigurations("IFM/configuration_adadifa.txt");
         ICFG = staticDynamicSettings[0];
         exceptionalFlow = staticDynamicSettings[1];
+        methodLevelFlow = staticDynamicSettings[2];
     }
 
     public static boolean[] getAnalysisConfiguration(){

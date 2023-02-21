@@ -1,7 +1,7 @@
 package IFM;
 
-import disttaint.DynTransferGraph;
-import disttaint.dtUtil;
+//import disttaint.DynTransferGraph;
+//import disttaint.dtUtil;
 
 import java.io.*;
 import java.util.*;
@@ -48,6 +48,11 @@ public class MethodLevelAnalysis {
 	static Set<String> impactSet = new LinkedHashSet<String>();
 	
 	public static void main(String args[]){
+		if (!AnalysisConfiguration.methodLevelFlow)
+		{
+			return;
+		}
+
 		if (args.length < 3) {
 			System.err.println("Too few arguments: \n\t " +
 					"DiverAnalysis changedMethods traceDir binDir [numberTraces] [debugFlag]\n\n");

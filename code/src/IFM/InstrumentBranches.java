@@ -48,8 +48,8 @@ public class InstrumentBranches extends EAInst {
 
 		InstrumentBranches d2r = new InstrumentBranches();
 		// examine catch blocks
-		dua.Options.ignoreCatchBlocks = false;
-		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isExceptionalFlow();
+//		dua.Options.ignoreCatchBlocks = false;
+		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isNotExceptionalFlow();
 		Scene.v().addBasicClass("profile.BranchReporter");
 		Scene.v().addBasicClass("disttaint.dt2BranchMonitor");
 		Forensics.registerExtension(d2r);

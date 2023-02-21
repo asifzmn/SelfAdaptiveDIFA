@@ -88,7 +88,7 @@ public class EAInst implements Extension {
 		EAInst eaInst = new EAInst();
 		// examine catch blocks
 //		dua.Options.ignoreCatchBlocks = false;
-		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isExceptionalFlow();
+		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isNotExceptionalFlow();
 
 		Scene.v().addBasicClass("EAS.Monitor");
 		

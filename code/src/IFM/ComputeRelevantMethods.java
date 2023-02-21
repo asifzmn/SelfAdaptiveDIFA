@@ -37,11 +37,12 @@ public class ComputeRelevantMethods extends EAInst {
     protected SootClass clsMonitor;
     public static void main(String args[]){
         args = preProcessArgs(opts, args);
+//        AnalysisConfiguration analysisConfiguration = new AnalysisConfiguration();
 
         ComputeRelevantMethods oInst = new ComputeRelevantMethods();
         // examine catch blocks
 //        dua.Options.ignoreCatchBlocks = false;
-        dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isExceptionalFlow();
+        dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isNotExceptionalFlow();
 
         Forensics.registerExtension(oInst);
         Forensics.main(args);

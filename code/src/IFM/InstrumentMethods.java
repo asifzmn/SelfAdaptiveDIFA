@@ -39,7 +39,7 @@ public class InstrumentMethods extends EAInst {
 		InstrumentMethods dvInst = new InstrumentMethods();
 		// examine catch blocks
 //		dua.Options.ignoreCatchBlocks = false;
-		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isExceptionalFlow();
+		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isNotExceptionalFlow();
 		Scene.v().addBasicClass("disttaint.OTMonitor");
 //		if (opts.monitor_per_thread()) {
 //			Scene.v().addBasicClass("disttaint.OTMonitor");

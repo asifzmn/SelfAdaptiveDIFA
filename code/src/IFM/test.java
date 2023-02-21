@@ -6,6 +6,7 @@ public class test {
 //        AnalysisConfiguration analysisConfiguration = new AnalysisConfiguration();
         System.out.println(AnalysisConfiguration.isICFG());
         System.out.println(AnalysisConfiguration.isExceptionalFlow());
+        System.out.println(AnalysisConfiguration.isMethodLevelFlow());
         System.out.println("testing a java file");
     }
 }

@@ -48,7 +48,7 @@ public class MethodLevelAnalysis {
 	static Set<String> impactSet = new LinkedHashSet<String>();
 	
 	public static void main(String args[]){
-		if (!AnalysisConfiguration.methodLevelFlow)
+		if (!AnalysisConfiguration.isMethodLevelFlow())
 		{
 			return;
 		}

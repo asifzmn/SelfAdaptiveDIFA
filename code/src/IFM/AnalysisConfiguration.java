@@ -99,6 +99,10 @@ public class AnalysisConfiguration {
         return !isExceptionalFlow();
     }
 
+    public static boolean isMethodLevelFlow() {
+        return methodLevelFlow;
+    }
+
     public static void main(String[] args) {
         AnalysisConfiguration analysisConfiguration = new AnalysisConfiguration();
         System.out.println(isICFG());

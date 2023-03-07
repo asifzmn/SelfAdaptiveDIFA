@@ -16,14 +16,20 @@ public class AnalysisConfiguration {
     public static final int Framework_height = 64;
     public static double[][] MAP = new double[Framework_width][Framework_height];
 
-    public static int n_configs = 3;
+    public static int n_configs = 8;
+    public static int bufSize_bit_start=3;
+    public static int bufSize_bit_end=bufSize_bit_start+2;
+    public static int contextDepth_bit_start =bufSize_bit_end+1;
+    public static int contextDepth_bit_end = contextDepth_bit_start +1;
     public static boolean[] staticDynamicSettings = new boolean[n_configs];
 
     public static double invalid = -1;
     public static boolean ICFG;
     public static boolean exceptionalFlow;
-
     public static boolean methodLevelFlow;
+
+    public static int bufSize;
+    public static int contextDepth;
 
     public static String configurations="";
     public static String readLastLine(String fileName) {
@@ -80,12 +86,46 @@ public class AnalysisConfiguration {
         ICFG = staticDynamicSettings[0];
         exceptionalFlow = staticDynamicSettings[1];
         methodLevelFlow = staticDynamicSettings[2];
+
+        boolean[] boolArrayBuffer = subArray(staticDynamicSettings,bufSize_bit_start,bufSize_bit_end);
+        bufSize = get_buffer_size(boolArrayBuffer);
+        boolean[] boolArrayContext = subArray(staticDynamicSettings, contextDepth_bit_start, contextDepth_bit_end);
+        contextDepth = boolearnArraytoInt(boolArrayContext);
     }
 
     public static boolean[] getAnalysisConfiguration(){
         getConfigurations("IFM/configuration_adadifa.txt");
         return staticDynamicSettings;
     }
+
+
+    public static boolean[] subArray(boolean[] array, int beg, int end) {
+        return Arrays.copyOfRange(array, beg, end + 1);
+    }
+
+    public static int boolearnArraytoInt(boolean[] boolArray){
+        int n = 0;
+        for (boolean b : boolArray) {
+            n = (n << 1) + (b ? 1 : 0);
+        }
+        return n;
+    }
+
+    public static int get_buffer_size(boolean[] boolArray){
+        return (1<<boolearnArraytoInt(boolArray))*1000;
+    }
+
+    public static void var_methods() {
+        int bufSize_bit_start=0,bufSize_bit_end=2,context_bit_start=3,context_bit_end=4;
+        boolean[] boolArray = new boolean[] {true,true,false,true,false};
+        boolean[] boolArrayBuffer = subArray(boolArray,bufSize_bit_start,bufSize_bit_end);
+        int bufSize = get_buffer_size(boolArrayBuffer);
+        System.out.println(bufSize);
+        boolean[] boolArrayContext = subArray(boolArray,context_bit_start,context_bit_end);
+        int context = boolearnArraytoInt(boolArrayContext);
+        System.out.println(context);
+    }
+
 
     public static boolean isICFG() {
         return ICFG;
@@ -103,10 +143,21 @@ public class AnalysisConfiguration {
         return methodLevelFlow;
     }
 
+    public static int getBufSize() {
+        return bufSize;
+    }
+
+    public static int getContextDepth() {
+        return contextDepth;
+    }
+
     public static void main(String[] args) {
         AnalysisConfiguration analysisConfiguration = new AnalysisConfiguration();
         System.out.println(isICFG());
         System.out.println(isExceptionalFlow());
+        System.out.println(isMethodLevelFlow());
+        System.out.println(getBufSize());
+        System.out.println(getContextDepth());
         System.exit(0);
         // Arrays.fill(myarray, 42);
 

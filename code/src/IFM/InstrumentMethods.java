@@ -41,7 +41,8 @@ public class InstrumentMethods extends EAInst {
 //		dua.Options.ignoreCatchBlocks = false;
 		dua.Options.ignoreCatchBlocks = AnalysisConfiguration.isNotExceptionalFlow();
 //		Scene.v().addBasicClass("disttaint.OTMonitor");
-		Scene.v().addBasicClass("ODD.ODDMonitor");
+//		Scene.v().addBasicClass("ODD.ODDMonitor");
+		Scene.v().addBasicClass("IFM.Monitor");
 //		if (opts.monitor_per_thread()) {
 //			Scene.v().addBasicClass("disttaint.OTMonitor");
 //		}
@@ -65,8 +66,8 @@ public class InstrumentMethods extends EAInst {
 //		else 
 		{
 //			clsMonitor = Scene.v().getSootClass("disttaint.OTMonitor");
-			clsMonitor = Scene.v().getSootClass("ODD.ODDMonitor");
-//			clsMonitor = Scene.v().getSootClass("IFM.Monitor");
+//			clsMonitor = Scene.v().getSootClass("ODD.ODDMonitor");
+			clsMonitor = Scene.v().getSootClass("IFM.Monitor");
 
 		}
 		clsMonitor.setApplicationClass();

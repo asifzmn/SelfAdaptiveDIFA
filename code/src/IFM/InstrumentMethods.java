@@ -70,6 +70,9 @@ public class InstrumentMethods extends EAInst {
 			clsMonitor = Scene.v().getSootClass("IFM.Monitor");
 
 		}
+
+		System.out.println(clsMonitor.getMethods());
+
 		clsMonitor.setApplicationClass();
 		mInitialize = clsMonitor.getMethodByName("initialize");
 		mEnter = clsMonitor.getMethodByName("enter");

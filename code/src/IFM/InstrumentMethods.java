@@ -76,15 +76,15 @@ public class InstrumentMethods extends EAInst {
 		mReturnInto = clsMonitor.getMethodByName("returnInto");
 		mTerminate = clsMonitor.getMethodByName("terminate");
 		
-//		mReturnFrom = clsMonitor.getMethodByName("returnFrom");
-//
-//		cDistSockInStream = Scene.v().getSootClass("disttaint.dtSocketInputStream");
-//		cDistSockOutStream = Scene.v().getSootClass("disttaint.dtSocketOutputStream");
-//		mNioRead = clsMonitor.getMethodByName("dist_nioread");
-//		mNioWrite = clsMonitor.getMethodByName("dist_niowrite");
-//
-//		mObjStreamRead = clsMonitor.getMethodByName("dist_objstreamread");
-//		mObjStreamWrite = clsMonitor.getMethodByName("dist_objstreamwrite");
+		mReturnFrom = clsMonitor.getMethodByName("returnFrom");
+
+		cDistSockInStream = Scene.v().getSootClass("disttaint.dtSocketInputStream");
+		cDistSockOutStream = Scene.v().getSootClass("disttaint.dtSocketOutputStream");
+		mNioRead = clsMonitor.getMethodByName("dist_nioread");
+		mNioWrite = clsMonitor.getMethodByName("dist_niowrite");
+
+		mObjStreamRead = clsMonitor.getMethodByName("dist_objstreamread");
+		mObjStreamWrite = clsMonitor.getMethodByName("dist_objstreamwrite");
 	}
 	
 	@Override public void run() {

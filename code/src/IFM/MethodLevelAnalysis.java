@@ -46,8 +46,8 @@ public class MethodLevelAnalysis {
 	static boolean improvedPrec = false; // choose between the purely EA-based and precision-improved versions
 	static boolean runDiver = false;
 	static Set<String> impactSet = new LinkedHashSet<String>();
-	
-	public static void main(String args[]){
+
+	public static void main_method(String args[]){
 		if (!AnalysisConfiguration.isMethodLevelFlow())
 		{
 			return;
@@ -63,14 +63,14 @@ public class MethodLevelAnalysis {
 		String traceDir = args[1]; // tell the directory where execution traces can be accessed
 		String binDir = args[2]; // tell the directory where the static value transfer graph binary can be found
 		String sink="";
-		
+
 		String changedMethods = args[0];
 		List<String> Pair = dua.util.Util.parseStringList(query, ';');
 		if (Pair.size() < 1) {
 			// nothing to do
 			System.err.println("Empty query, nothing to do.");
 			return;
-		} 
+		}
 		changedMethods=Pair.get(0);
 		if (Pair.size() > 1)
 			sink=Pair.get(1);
@@ -92,15 +92,19 @@ public class MethodLevelAnalysis {
 					final long startTime = System.currentTimeMillis();
 					separateParseTraces(changedMethods, traceDir,sink,query);
 					final long stopTime = System.currentTimeMillis();
-				    System.out.println("	separateParseTraces took " + (startTime - stopTime ) + " ms");
+					System.out.println("	separateParseTraces took " + (startTime - stopTime ) + " ms");
 				}
-				
+
 				return;
-			}			
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
+	}
+
+	public static void main(String args[]){
+		main_method(args);
 	}
 	
 	public static int init(String binDir) {

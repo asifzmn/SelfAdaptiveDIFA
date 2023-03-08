@@ -20,6 +20,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import MciaUtil.MethodEventComparator;
 import disttaint.OTMonitor.logicClock;
+
+import static IFM.MethodLevelAnalysis.main_method;
+
 /** Monitoring method events in runtime upon
  * invocations by instrumented probes in the subject
  *
@@ -354,6 +357,35 @@ public class Monitor {
 
                 g_counter_distEA ++;
                 g_lgclock.increment();
+
+//                String[] query = {"<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.server.AbstractNonblockingServer$AsyncFrameBuffer: void <init>(org.apache.thrift.server.AbstractNonblockingServer,org.apache.thrift.transport.TNonblockingTransport,java.nio.channels.SelectionKey,org.apache.thrift.server.AbstractNonblockingServer$AbstractSelectThread)>", "/pool/home/asif/Thrift", "/pool/home/asif/SelfAdaptiveDIFA/data/Thrift/OTInstrumented"};
+//                main_method(query);
+
+//                boolean ifProcess=!(methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & (timeSpan>60000) & ((g_counter > CN_LIMIT && g_counter_queue > CN_LIMIT && B_Queueing.size()>=CN_LIMIT) || g_counter_queue > CN_LIMIT_QUEUE);
+//                ifProcess= ifProcess || ((methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & timeSpan>900000 &((g_counter > CN_LIMIT && g_counter_queue > CN_LIMIT && B_Queueing.size()>=CN_LIMIT) || g_counter_queue > CN_LIMIT_QUEUE));
+//                //System.out.println("Before g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" CN_LIMIT "+CN_LIMIT +" CN_LIMIT_QUEUE"+CN_LIMIT_QUEUE);
+//                if (ifProcess) {
+////                    System.out.println("After g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" B_Working.size()"+B_Working.size()+" B_Queueing.size()"+B_Queueing.size()+" timeSpan="+timeSpan+" lastProcessTime="+lastProcessTime);
+//                    //logger.info("ODDMonitor After g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" B_Working.size()"+B_Working.size()+" B_Queueing.size()"+B_Queueing.size());
+//                    B_Working.clear();
+//                    g_counter=0;
+//                    //B_Working.addAll(B_Queueing);
+//                    //B_Queueing.clear();
+//                    for (int i=0; i<CN_LIMIT; i++)
+//                    {
+//                        if (B_Queueing.size()>0)
+//                        {
+//                            B_Working.add(B_Queueing.get(0));
+//                            g_counter++;
+//                            B_Queueing.remove(0);
+//                            g_counter_queue--;
+//                        }
+//                    }
+//                    processEvents((dynamicTimeOutTime+staticCreateTimeOutTime+staticLoadTimeOutTime));
+//                    lastProcessTime=System.currentTimeMillis();
+//                    timeSpan=0;
+//
+//                }
             }
         } catch (Exception e) {
             e.printStackTrace();

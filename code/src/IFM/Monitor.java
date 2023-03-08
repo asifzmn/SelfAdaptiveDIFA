@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import MciaUtil.MethodEventComparator;
 import disttaint.OTMonitor.logicClock;
 
-import static IFM.MethodLevelAnalysis.main_method;
+//import static IFM.MethodLevelAnalysis.main_method;
 
 /** Monitoring method events in runtime upon
  * invocations by instrumented probes in the subject

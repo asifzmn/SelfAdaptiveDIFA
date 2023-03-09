@@ -78,9 +78,9 @@ public class InstrumentMethods extends EAInst {
 		for (SootMethod sootMethod: clsMonitor.getMethods()) {
 			System.out.println(sootMethod.getName());
 		}
-
-		mEnter = clsMonitor.getMethodByName("enter");
+		
 		mInitialize = clsMonitor.getMethodByName("initialize");
+		mEnter = clsMonitor.getMethodByName("enter");
 		mReturnInto = clsMonitor.getMethodByName("returnInto");
 		mTerminate = clsMonitor.getMethodByName("terminate");
 		

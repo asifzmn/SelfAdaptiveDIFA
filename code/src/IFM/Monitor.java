@@ -32,6 +32,8 @@ import disttaint.OTMonitor.logicClock;
 
 public class Monitor {
     protected static final long CN_LIMIT = 1000*1000*1000;
+    protected static final long CN_LIMIT_QUEUE = 10 * CN_LIMIT;
+
     protected static int g_traceCnt = 0;
 
     /* first message-receiving events */
@@ -80,6 +82,10 @@ public class Monitor {
     public static String receivedMessages="";
 
     protected static String fnEventMaps = "";
+
+    static long lastProcessTime=0;
+//    protected static Integer g_counter_queue = 0;
+
 
     /* The name of serialization target file will be set by EARun via this setter */
 //	public static void setEventMapSerializeFile(String fname) {
@@ -243,6 +249,8 @@ public class Monitor {
                 assert S.containsKey(methodname);
                 A.put(g_counter, S.get(methodname)*-1);  // negative index for entry event
                 g_counter ++;
+//                g_counter_queue ++;
+
 
                 if (g_counter > CN_LIMIT) {
                     serializeEvents();
@@ -361,12 +369,17 @@ public class Monitor {
 //                String[] query = {"<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.server.AbstractNonblockingServer$AsyncFrameBuffer: void <init>(org.apache.thrift.server.AbstractNonblockingServer,org.apache.thrift.transport.TNonblockingTransport,java.nio.channels.SelectionKey,org.apache.thrift.server.AbstractNonblockingServer$AbstractSelectThread)>", "/pool/home/asif/Thrift", "/pool/home/asif/SelfAdaptiveDIFA/data/Thrift/OTInstrumented"};
 //                main_method(query);
 
+                long timeSpan=System.currentTimeMillis()-lastProcessTime;
 //                boolean ifProcess=!(methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & (timeSpan>60000) & ((g_counter > CN_LIMIT && g_counter_queue > CN_LIMIT && B_Queueing.size()>=CN_LIMIT) || g_counter_queue > CN_LIMIT_QUEUE);
 //                ifProcess= ifProcess || ((methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & timeSpan>900000 &((g_counter > CN_LIMIT && g_counter_queue > CN_LIMIT && B_Queueing.size()>=CN_LIMIT) || g_counter_queue > CN_LIMIT_QUEUE));
-//                //System.out.println("Before g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" CN_LIMIT "+CN_LIMIT +" CN_LIMIT_QUEUE"+CN_LIMIT_QUEUE);
-//                if (ifProcess) {
-////                    System.out.println("After g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" B_Working.size()"+B_Working.size()+" B_Queueing.size()"+B_Queueing.size()+" timeSpan="+timeSpan+" lastProcessTime="+lastProcessTime);
-//                    //logger.info("ODDMonitor After g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" B_Working.size()"+B_Working.size()+" B_Queueing.size()"+B_Queueing.size());
+                boolean ifProcess=!(methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & (timeSpan>60000) & ((g_counter > CN_LIMIT && A.size() > CN_LIMIT && A.size()>=CN_LIMIT) || A.size() > CN_LIMIT_QUEUE);
+                ifProcess= ifProcess || ((methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & timeSpan>900000 &((g_counter > CN_LIMIT && A.size() > CN_LIMIT && A.size()>=CN_LIMIT) || A.size() > CN_LIMIT_QUEUE));
+
+//                System.out.println("Before g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" CN_LIMIT "+CN_LIMIT +" CN_LIMIT_QUEUE"+CN_LIMIT_QUEUE);
+                if (ifProcess) {
+                    System.out.println("Event Triggered");
+//                    System.out.println("After g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" B_Working.size()"+B_Working.size()+" B_Queueing.size()"+B_Queueing.size()+" timeSpan="+timeSpan+" lastProcessTime="+lastProcessTime);
+//                    logger.info("ODDMonitor After g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" B_Working.size()"+B_Working.size()+" B_Queueing.size()"+B_Queueing.size());
 //                    B_Working.clear();
 //                    g_counter=0;
 //                    //B_Working.addAll(B_Queueing);
@@ -382,10 +395,12 @@ public class Monitor {
 //                        }
 //                    }
 //                    processEvents((dynamicTimeOutTime+staticCreateTimeOutTime+staticLoadTimeOutTime));
-//                    lastProcessTime=System.currentTimeMillis();
-//                    timeSpan=0;
-//
-//                }
+                    lastProcessTime=System.currentTimeMillis();
+                    timeSpan=0;
+
+                }
+
+
             }
         } catch (Exception e) {
             e.printStackTrace();

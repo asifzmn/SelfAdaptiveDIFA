@@ -81,7 +81,7 @@ public class Monitor {
 
     protected static String fnEventMaps = "";
 
-    static long lastProcessTime=0;
+    static long lastProcessTime=System.currentTimeMillis();
 //    protected static Integer g_counter_queue = 0;
     protected static HashMap<Integer, Integer> A_Working = new LinkedHashMap<Integer, Integer>();
 
@@ -367,8 +367,9 @@ public class Monitor {
 
                 long timeSpan=System.currentTimeMillis()-lastProcessTime;
 
-                boolean ifProcess=!(methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & (timeSpan>60000) & ((g_counter > CN_LIMIT && A.size() > CN_LIMIT && A.size()>=CN_LIMIT) || A.size() > CN_LIMIT_QUEUE);
-                ifProcess= ifProcess || ((methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & timeSpan>900000 &((g_counter > CN_LIMIT && A.size() > CN_LIMIT && A.size()>=CN_LIMIT) || A.size() > CN_LIMIT_QUEUE));
+                boolean ifProcess= timeSpan>60000;
+//                boolean ifProcess=!(methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & (timeSpan>60000) & ((g_counter > CN_LIMIT && A.size() > CN_LIMIT && A.size()>=CN_LIMIT) || A.size() > CN_LIMIT_QUEUE);
+//                ifProcess= ifProcess || ((methodname.indexOf("voldemort.")>=0 || methodname.indexOf(".zookeeper.")>0 || methodname.indexOf(".netty.")>0) & timeSpan>900000 &((g_counter > CN_LIMIT && A.size() > CN_LIMIT && A.size()>=CN_LIMIT) || A.size() > CN_LIMIT_QUEUE));
 
 //                System.out.println("Before g_counter="+g_counter+" g_counter_queue="+g_counter_queue+" CN_LIMIT "+CN_LIMIT +" CN_LIMIT_QUEUE"+CN_LIMIT_QUEUE);
                 if (ifProcess) {

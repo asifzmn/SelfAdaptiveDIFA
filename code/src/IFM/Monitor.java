@@ -392,7 +392,11 @@ public class Monitor {
 
                     boolean canCompleteBeforeQueryBudget = true;
 
-                    String[] query = {"<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.server.AbstractNonblockingServer$AsyncFrameBuffer: void <init>(org.apache.thrift.server.AbstractNonblockingServer,org.apache.thrift.transport.TNonblockingTransport,java.nio.channels.SelectionKey,org.apache.thrift.server.AbstractNonblockingServer$AbstractSelectThread)>", "/pool/home/asif/Thrift", "/pool/home/asif/SelfAdaptiveDIFA/data/Thrift/OTInstrumented"};
+
+                    String sourceSinkMethodPairDiff = "<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.server.AbstractNonblockingServer$AsyncFrameBuffer: void <init>(org.apache.thrift.server.AbstractNonblockingServer,org.apache.thrift.transport.TNonblockingTransport,java.nio.channels.SelectionKey,org.apache.thrift.server.AbstractNonblockingServer$AbstractSelectThread)>";
+                    String traceDir = "/pool/home/asif/Thrift";
+                    String binDir = "/pool/home/asif/SelfAdaptiveDIFA/data/Thrift/OTInstrumented";
+//                    String[] query = {sourceSinkMethodPairDiff, traceDir, binDir};
 
                     String listFile = "IFM/sourceSinkMethodPairDiffClass.txt";
                     HashSet<String> ListSet = getListSet(listFile);
@@ -408,6 +412,7 @@ public class Monitor {
 
 //                        System.out.println(set);
 //                        TimeUnit.SECONDS.sleep(5);
+                        String[] query = {set, traceDir, binDir};
                         main_method(query);
 
                     }

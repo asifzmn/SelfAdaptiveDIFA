@@ -1,0 +1,5 @@
+<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.server.AbstractNonblockingServer$AsyncFrameBuffer: void <init>(org.apache.thrift.server.AbstractNonblockingServer,org.apache.thrift.transport.TNon$
+<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.transport.TSocket: void <init>(java.net.Socket)>
+<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.TNonblockingMultiFetchClient: java.nio.ByteBuffer[] fetch()>
+<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.transport.TFileTransport: void open()>
+<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.server.TSimpleServer: void <clinit>()>

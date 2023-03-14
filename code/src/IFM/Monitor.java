@@ -1,11 +1,8 @@
 package IFM;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPOutputStream;
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
@@ -20,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import MciaUtil.MethodEventComparator;
 
 import static IFM.MethodLevelAnalysis.main_method;
+import static IFM.dtUtil.getListSet;
 
 /** Monitoring method events in runtime upon
  * invocations by instrumented probes in the subject
@@ -391,8 +389,29 @@ public class Monitor {
                         }
                     }
 //                    processEvents((dynamicTimeOutTime+staticCreateTimeOutTime+staticLoadTimeOutTime));
+
+                    boolean canCompleteBeforeQueryBudget = true;
+
                     String[] query = {"<org.apache.thrift.TNonblockingMultiFetchClient$MultiFetch: void run()>; <org.apache.thrift.server.AbstractNonblockingServer$AsyncFrameBuffer: void <init>(org.apache.thrift.server.AbstractNonblockingServer,org.apache.thrift.transport.TNonblockingTransport,java.nio.channels.SelectionKey,org.apache.thrift.server.AbstractNonblockingServer$AbstractSelectThread)>", "/pool/home/asif/Thrift", "/pool/home/asif/SelfAdaptiveDIFA/data/Thrift/OTInstrumented"};
-                    main_method(query);
+
+                    String listFile = "IFM/sourceSinkMethodPairDiffClass.txt";
+                    HashSet<String> ListSet = getListSet(listFile);
+//                    System.out.println(ListSet.size());
+
+                    for (String set : ListSet)
+                    {
+                        if (!canCompleteBeforeQueryBudget)
+                        {
+                            // remove current partial file set and update config by notifying agent
+                            break;
+                        }
+
+//                        System.out.println(set);
+//                        TimeUnit.SECONDS.sleep(5);
+                        main_method(query);
+
+                    }
+
                     lastProcessTime=System.currentTimeMillis();
                     timeSpan=0;
 
